@@ -21,6 +21,10 @@ void MCP41XX::Init()
 
 void MCP41XX::SetWiper(int wiperValue)
 {
+	if (wiperValue > m_maxValue)
+	{
+		wiperValue = m_maxValue;
+	}
 	digitalWrite(m_csPin, LOW);
 	m_spi->transfer(WIPER_VOLATILE_ADDDRESS + WRITE_DATA + (wiperValue & 0x100 ? 1 : 0));
 	m_spi->transfer(wiperValue & 0xff);

@@ -1,6 +1,8 @@
 
 #include <Arduino.h>
+
 #include "System.h"
+
 #include "Motors.h"
 #include "Mut_Trimmer.h"
 #include "Configuration.h"
@@ -25,18 +27,27 @@ static void showScalarValue(uint32_t value)
 
 void scalarFunction(void* param)
 {
-	uint32_t oldScalarValue = Configuration::instance()->getConfiguration()->scalarValue;
-
+	uint32_t oldScalarValue =  Configuration::instance()->getConfiguration()->scalarValue;
+	
 	systemConfig.lcd->clear();
 	uint32_t newScalarValue = oldScalarValue;
 	// Quad can only use positive numbers so add 1000
-	systemConfig.quadrature->Init(&newScalarValue, 0, 1000 , 1, Quadrature::QuadMode::SimpleIncrement);
+
+	systemConfig.quadrature->setBoundaries(0, 1000, true);
+	systemConfig.quadrature->setEncoderValue(oldScalarValue);
+	systemConfig.quadrature->setAcceleration(5);
+
 	showScalarValue(newScalarValue);
+	int last = analogRead(THROTTLE_PIN);
 	do
 	{
-		systemConfig.quadrature->Update();
-
-		showScalarValue(newScalarValue);
+		newScalarValue = systemConfig.quadrature->readEncoder();
+		int throttleValue = analogRead(THROTTLE_PIN);
+		if (systemConfig.quadrature->encoderChanged() || throttleValue != last)
+		{	
+			last = throttleValue;
+			showScalarValue(newScalarValue);
+		}
 	}
 	while (!systemConfig.encoderSwitch->Pressed());
 

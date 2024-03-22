@@ -5,8 +5,10 @@
 */
 
 // the setup function runs once when you press reset or power the board
+#include <AiAvrRotaryEncoderNumberSelector.h>
+#include <AiAvrRotaryEncoder.h>
 #include <EEPROM.h>
-#include <Encoder.h>
+
 #include <Arduino.h>
 #include <math.h>
 #include <SPI.h>
@@ -37,8 +39,8 @@ Motors motors;
 #define LCD_ROWS	2
 
 #define ENCODER_SWITCH	6
-#define ENCODER_PIN1	5
-#define ENCODER_PIN2	4
+#define ENCODER_PIN1	2
+#define ENCODER_PIN2	3
 
 LiquidCrystal_I2C* lcd;
 
@@ -47,7 +49,13 @@ SystemConfig systemConfig;
 SoftSPI spi(MOSI, MISO, SCK);
 SoftWire lcdWire(ADC5D, ADCH6);
 IDigitalPot* pLeft = NULL;
-Encoder encoder(ENCODER_PIN1, ENCODER_PIN2);
+AiAvrRotaryEncoder encoder(ENCODER_PIN1, ENCODER_PIN2, -1 - 1, 1);
+
+void encoderCallback()
+{
+
+	encoder.readEncoder_ISR();
+}
 
 void setup() 
 {
@@ -64,7 +72,7 @@ void setup()
 	lcd->print("    TrakTrike   ");
 	systemConfig.encoderSwitch = new Switch();
 	systemConfig.encoderSwitch->Init(ENCODER_SWITCH);
-	systemConfig.quadrature = new Quadrature(&encoder);
+	systemConfig.quadrature = &encoder;
 	systemConfig.lcd = lcd;
 	systemConfig.left = new MCP41XX(&spi, CSLEFT);
 	systemConfig.left->Init();
@@ -73,6 +81,8 @@ void setup()
 	systemConfig.right->Init();
 
 	initMotors();
+
+	encoder.setup(encoderCallback);
 }
 
 

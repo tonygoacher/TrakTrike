@@ -21,4 +21,6 @@ protected:
 	static const byte WIPER_VOLATILE_ADDDRESS = 0b00000000;
 	static const byte WIPER_NONE_VOLATILE_ADDDRESS = 0b00000010;
 
+	static const int m_maxValue = 511;
+
 };
