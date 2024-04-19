@@ -28,26 +28,31 @@
 
 Motors motors;
 
-#define CSLEFT	12
-#define CSRIGHT	7
+#define _CS	9
 #define MOSI    11
 #define MISO    A7	// UNUSED!
-#define SCK		13
+#define SCK		10
+
+#define SHUTDOWN 12
+
+#define WIPER_LEFT_ADDRESS 0
+#define WIPER_RIGHT_ADDRESS 1
 
 #define LCD_ADDRESS 0x27//Define I2C Address where the PCF8574A is
 #define LCD_COLOUMNS 16
 #define LCD_ROWS	2
 
-#define ENCODER_SWITCH	6
+#define ENCODER_SWITCH	4
 #define ENCODER_PIN1	2
 #define ENCODER_PIN2	3
+
+
 
 LiquidCrystal_I2C* lcd;
 
 SystemConfig systemConfig;
 
 SoftSPI spi(MOSI, MISO, SCK);
-SoftWire lcdWire(ADC5D, ADCH6);
 IDigitalPot* pLeft = NULL;
 AiAvrRotaryEncoder encoder(ENCODER_PIN1, ENCODER_PIN2, -1 - 1, 1);
 
@@ -74,11 +79,15 @@ void setup()
 	systemConfig.encoderSwitch->Init(ENCODER_SWITCH);
 	systemConfig.quadrature = &encoder;
 	systemConfig.lcd = lcd;
-	systemConfig.left = new MCP41XX(&spi, CSLEFT);
+	systemConfig.left = new MCP41XX(&spi, _CS, WIPER_LEFT_ADDRESS);
+	systemConfig.right = new MCP41XX(&spi, _CS, WIPER_RIGHT_ADDRESS);
 	systemConfig.left->Init();
-
-	systemConfig.right = new MCP41XX(&spi, CSRIGHT);
 	systemConfig.right->Init();
+	Serial.println("AAAAAAAA");
+
+	pinMode(SHUTDOWN, OUTPUT);
+	digitalWrite(SHUTDOWN, HIGH);
+
 
 	initMotors();
 
@@ -92,7 +101,8 @@ int dir = 1;
 // the loop function runs over and over again until power down or reset
 void loop()
 {
-
+	//Serial.print(dir++);
+//	Serial.println();
 
 	MainMenu(&mainMenuConfig);
 	/*
@@ -111,6 +121,6 @@ void loop()
 		}
 	}
 	*/
-	delay(50);
+	delay(100);
 
 }

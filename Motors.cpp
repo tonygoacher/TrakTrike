@@ -22,15 +22,21 @@ void initMotors()
 
 void runMotors()
 {
+
 	int mutatorIndex = 0;
 	while (m.motorSpeedMutators[mutatorIndex] != NULL)
 	{
 		m.motorSpeedMutators[mutatorIndex](&m, &motorSpeeds);
 		mutatorIndex++;
 	}
+
 	Serial.print(motorSpeeds.m1Speed);
 	Serial.print("  ");
 	Serial.println(motorSpeeds.m2Speed);
+	
 	systemConfig.left->SetWiper(motorSpeeds.m1Speed);
+
+
 	systemConfig.right->SetWiper(motorSpeeds.m2Speed);
+	return;
 }
