@@ -26,9 +26,9 @@ void TrimFunction(void* param)
 	systemConfig.lcd->clear();
 	uint32_t displayTrimValue = getTrimValue();	// Trim value range is -1000.0 to +1000.0 but quad can onlu use positive numbers
 
-	systemConfig.quadrature->setBoundaries(-1000, 1000, true);
+	systemConfig.quadrature->setBoundaries(-1000, 1000, false);
 	systemConfig.quadrature->setEncoderValue(displayTrimValue);
-	systemConfig.quadrature->setAcceleration(5);
+	systemConfig.quadrature->setAcceleration(20);
 
 	systemConfig.lcd->print("      Trim      ");
 	showTrimValue(displayTrimValue);

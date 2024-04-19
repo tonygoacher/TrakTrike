@@ -5,16 +5,16 @@ VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TrakTrike", "TrakTrike.vcxproj", "{C5F80730-F44F-4478-BDAE-6634EFC2CA88}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Encoder-master-1.4.1", "Libraries\Encoder-master\1.4.1\Encoder-master\Encoder-master-1.4.1.vcxitems", "{5F431C35-004F-4AE2-8ABD-93C253B415B7}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EEPROM-2.0", "Libraries\EEPROM\2.0\EEPROM\EEPROM-2.0.vcxitems", "{09920470-AF64-48B8-B592-F9B82BEAD0BB}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AiAvrRotaryEncoder-master-1.0", "Libraries\AiAvrRotaryEncoder-master\1.0\AiAvrRotaryEncoder-master\AiAvrRotaryEncoder-master-1.0.vcxitems", "{15853673-5FFA-4C61-A1D3-D24E8F1D20BD}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Libraries\EEPROM\2.0\EEPROM\EEPROM-2.0.vcxitems*{09920470-af64-48b8-b592-f9b82bead0bb}*SharedItemsImports = 9
-		Libraries\Encoder-master\1.4.1\Encoder-master\Encoder-master-1.4.1.vcxitems*{5f431c35-004f-4ae2-8abd-93c253b415b7}*SharedItemsImports = 9
+		Libraries\AiAvrRotaryEncoder-master\1.0\AiAvrRotaryEncoder-master\AiAvrRotaryEncoder-master-1.0.vcxitems*{15853673-5ffa-4c61-a1d3-d24e8f1d20bd}*SharedItemsImports = 9
+		Libraries\AiAvrRotaryEncoder-master\1.0\AiAvrRotaryEncoder-master\AiAvrRotaryEncoder-master-1.0.vcxitems*{c5f80730-f44f-4478-bdae-6634efc2ca88}*SharedItemsImports = 4
 		Libraries\EEPROM\2.0\EEPROM\EEPROM-2.0.vcxitems*{c5f80730-f44f-4478-bdae-6634efc2ca88}*SharedItemsImports = 4
-		Libraries\Encoder-master\1.4.1\Encoder-master\Encoder-master-1.4.1.vcxitems*{c5f80730-f44f-4478-bdae-6634efc2ca88}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86

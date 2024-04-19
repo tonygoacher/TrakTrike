@@ -33,7 +33,7 @@ void scalarFunction(void* param)
 	uint32_t newScalarValue = oldScalarValue;
 	// Quad can only use positive numbers so add 1000
 
-	systemConfig.quadrature->setBoundaries(0, 1000, true);
+	systemConfig.quadrature->setBoundaries(0, 1000, false);
 	systemConfig.quadrature->setEncoderValue(oldScalarValue);
 	systemConfig.quadrature->setAcceleration(5);
 
