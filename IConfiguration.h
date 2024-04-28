@@ -16,11 +16,23 @@ struct ConfigurationV2
 	uint16_t csum;
 };
 
+struct ConfigurationV3
+{
+	int	version;
+	int trimValue;
+	int scalarValue;
+	int minThrottle;
+	int maxThrottle;
+	uint16_t csum;
+};
+
+#define CONFIGURATION_TYPE	ConfigurationV3
+
 class IConfiguration
 {
 public:
 
 	virtual void init() = 0;
 	
-	virtual ConfigurationV2* getConfiguration() = 0;
+	virtual CONFIGURATION_TYPE* getConfiguration() = 0;
 };

@@ -20,6 +20,24 @@ void initMotors()
 	m.motorSpeedMutators[2] = &mutTrimmer;
 }
 
+int limitValue(int speed)
+{
+	if (speed < Configuration::instance()->getConfiguration()->minThrottle)
+	{
+		speed = Configuration::instance()->getConfiguration()->minThrottle;
+	}
+
+	if (speed > Configuration::instance()->getConfiguration()->maxThrottle)
+	{
+		speed = Configuration::instance()->getConfiguration()->maxThrottle;
+	}
+	return (int)map(speed, 
+			Configuration::instance()->getConfiguration()->minThrottle,
+		Configuration::instance()->getConfiguration()->maxThrottle,
+		0,
+		511);
+}
+
 void runMotors()
 {
 
@@ -33,7 +51,7 @@ void runMotors()
 	Serial.print(motorSpeeds.m1Speed);
 	Serial.print("  ");
 	Serial.println(motorSpeeds.m2Speed);
-	
+
 	systemConfig.left->SetWiper(motorSpeeds.m1Speed);
 
 

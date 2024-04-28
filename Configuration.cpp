@@ -21,7 +21,7 @@ uint16_t Configuration::getChecksum()
 {
 	uint16_t csum = 0;
 	uint8_t* data = (uint8_t*)&m_theConfiguration;
-	for (int i = 0; i < offsetof(ConfigurationV2, csum); i++)
+	for (int i = 0; i < offsetof(CONFIGURATION_TYPE, csum); i++)
 	{
 		csum += *data++;
 	}
@@ -52,6 +52,8 @@ void Configuration::init()
 		memset(&m_theConfiguration, 0, sizeof(m_theConfiguration));
 		m_theConfiguration.trimValue = 0;
 		m_theConfiguration.scalarValue = 620;
+		m_theConfiguration.minThrottle = 0;
+		m_theConfiguration.minThrottle = 1023;
 		m_theConfiguration.version = CURRENT_VERSION;
 		writeConfiguration();
 	}
@@ -63,7 +65,7 @@ void Configuration::getStoredData()
 	EEPROM.get(0, m_theConfiguration);
 }
 
-ConfigurationV2* Configuration::getConfiguration()
+CONFIGURATION_TYPE* Configuration::getConfiguration()
 {
 	return &m_theConfiguration;
 }
