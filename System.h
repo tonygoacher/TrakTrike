@@ -4,16 +4,17 @@
 
 #include <LiquidCrystal_I2C.h>
 #include "Switch.h"
-#include "IDigitalPot.h"
+#include "MCP41XX.h"
 #include "Configuration.h"
+
 
 struct SystemConfig
 {
 	LiquidCrystal_I2C* lcd;
 	AiAvrRotaryEncoder* quadrature;
 	Switch* encoderSwitch;
-	IDigitalPot* left;
-	IDigitalPot* right;
+	int reverseSwitchPort;
+	MCP41XX* left;
 };
 
 

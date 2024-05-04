@@ -4,13 +4,13 @@
 #include <SoftSPI.h>
 
 
-class MCP41XX : public IDigitalPot
+class MCP41XX 
 {
 public:
 	MCP41XX(SoftSPI* spi, byte csPin, byte wiperAddress);
 
-	void Init() override;
-	void SetWiper(int wiperValue) override;
+	void Init() ;
+	void SetWiper(int wiper1, int wiper2);
 
 protected:
 	SoftSPI* m_spi;

@@ -121,16 +121,17 @@
     <ClInclude Include="IConfiguration.h" />
     <ClInclude Include="ISteeringAngle.h" />
     <ClInclude Include="IDigitalPot.h" />
+    <ClInclude Include="INoneVolatilePot.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="MCP41XX.h" />
     <ClInclude Include="Menus.h" />
     <ClInclude Include="MenuSystem.h" />
     <ClInclude Include="Motors.h" />
+    <ClInclude Include="Mut_Reverse.h" />
     <ClInclude Include="Mut_Scalar.h" />
     <ClInclude Include="ScalarFunction.h" />
     <ClInclude Include="Mut_Throttle.h" />
     <ClInclude Include="Quadrature.h" />
-    <ClInclude Include="setMinFunction.h" />
     <ClInclude Include="setThrottleRange.h" />
     <ClInclude Include="SettingsMenu.h" />
     <ClInclude Include="SteeringAngleReader.h" />
@@ -146,6 +147,7 @@
     <ClCompile Include="MCP41XX.cpp" />
     <ClCompile Include="MenuSystem.cpp" />
     <ClCompile Include="Motors.cpp" />
+    <ClCompile Include="Mut_Reverse.cpp" />
     <ClCompile Include="Mut_Throttle.cpp" />
     <ClCompile Include="ScalarFunction.cpp" />
     <ClCompile Include="Mut_Scalar.cpp" />

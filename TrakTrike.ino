@@ -46,6 +46,8 @@ Motors motors;
 #define ENCODER_PIN1	2
 #define ENCODER_PIN2	3
 
+#define REVERSE_PORT 5
+
 
 
 LiquidCrystal_I2C* lcd;
@@ -70,6 +72,10 @@ void setup()
 	digitalWrite(MOSI, HIGH);
 
 
+	systemConfig.reverseSwitchPort = REVERSE_PORT;
+	pinMode(systemConfig.reverseSwitchPort, INPUT_PULLUP);
+
+
 	lcd = new LiquidCrystal_I2C(LCD_ADDRESS, LCD_COLOUMNS, LCD_ROWS);
 	lcd->init();
 	lcd->backlight();
@@ -80,9 +86,7 @@ void setup()
 	systemConfig.quadrature = &encoder;
 	systemConfig.lcd = lcd;
 	systemConfig.left = new MCP41XX(&spi, _CS, WIPER_LEFT_ADDRESS);
-	systemConfig.right = new MCP41XX(&spi, _CS, WIPER_RIGHT_ADDRESS);
 	systemConfig.left->Init();
-	systemConfig.right->Init();
 	Serial.println("AAAAAAAA");
 
 	pinMode(SHUTDOWN, OUTPUT);

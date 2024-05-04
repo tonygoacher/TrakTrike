@@ -21,10 +21,12 @@ Menu settingsMenuConfig =
 	&systemConfig,
 	" Settings Menu  ",
 	{
-		{"Trim         ",(void(*)(void*))TrimFunction,NULL},
-		{"Scaler       ",(void(*)(void*))scalarFunction,NULL},
-		{"Set min      ",(void(*)(void*))setMinValue,NULL},
-		{"Set max      ",(void(*)(void*))setMaxValue,NULL},
+
+
+		{"Throttle Min ",	(void(*)(void*))setMinValue,NULL},
+		{"Throttle Max ",	(void(*)(void*))setMinValue,NULL},
+
+
 		{"Exit         ",NULL,NULL},
 	//	{NULL,NULL,NULL}
 	}
