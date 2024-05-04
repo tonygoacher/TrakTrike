@@ -80,9 +80,7 @@ void setup()
 	systemConfig.quadrature = &encoder;
 	systemConfig.lcd = lcd;
 	systemConfig.left = new MCP41XX(&spi, _CS, WIPER_LEFT_ADDRESS);
-	systemConfig.right = new MCP41XX(&spi, _CS, WIPER_RIGHT_ADDRESS);
 	systemConfig.left->Init();
-	systemConfig.right->Init();
 	Serial.println("AAAAAAAA");
 
 	pinMode(SHUTDOWN, OUTPUT);

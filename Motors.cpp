@@ -34,9 +34,6 @@ void runMotors()
 	Serial.print("  ");
 	Serial.println(motorSpeeds.m2Speed);
 	
-	systemConfig.left->SetWiper(motorSpeeds.m1Speed);
-
-
-	systemConfig.right->SetWiper(motorSpeeds.m2Speed);
+	systemConfig.left->SetWiper(motorSpeeds.m1Speed, motorSpeeds.m2Speed);
 	return;
 }
