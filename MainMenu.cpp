@@ -6,6 +6,7 @@
 #include "SettingsMenu.h"
 #include "TrimFunction.h"
 #include "ScalarFunction.h"
+#include "setThrottleRange.h"
 
 
 extern SystemConfig systemConfig;
@@ -15,13 +16,15 @@ extern void MainMenu(Menu* menu);
 
 Menu settingsMenuConfig =
 {
-	3,
+	4,
 	0,
 	&systemConfig,
 	" Settings Menu  ",
 	{
-		{"Trim         ",(void(*)(void*))TrimFunction,NULL},
-		{"Scaler       ",(void(*)(void*))scalarFunction,NULL},
+		{"Trim         ",	(void(*)(void*))TrimFunction,NULL},
+		{"Scaler       ",	(void(*)(void*))scalarFunction,NULL},
+		{"Throttle Min ",	(void(*)(void*))setMinValue,NULL},
+		{"Throttle Max ",	(void(*)(void*))setMinValue,NULL},
 		{"Exit         ",NULL,NULL},
 	//	{NULL,NULL,NULL}
 	}

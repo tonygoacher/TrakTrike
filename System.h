@@ -13,8 +13,8 @@ struct SystemConfig
 	LiquidCrystal_I2C* lcd;
 	AiAvrRotaryEncoder* quadrature;
 	Switch* encoderSwitch;
+	int reverseSwitchPort;
 	MCP41XX* left;
-	MCP41XX* right;
 };
 
 

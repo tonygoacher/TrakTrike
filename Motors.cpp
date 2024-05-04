@@ -6,6 +6,7 @@
 #include "Mut_Trimmer.h"
 #include "Mut_Scalar.h"
 #include "System.h"
+#include "Mut_Reverse.h"
 
 extern SystemConfig systemConfig;
 

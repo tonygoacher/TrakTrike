@@ -46,6 +46,8 @@ Motors motors;
 #define ENCODER_PIN1	2
 #define ENCODER_PIN2	3
 
+#define REVERSE_PORT 5
+
 
 
 LiquidCrystal_I2C* lcd;
@@ -68,6 +70,10 @@ void setup()
 
 	pinMode(MOSI, OUTPUT);
 	digitalWrite(MOSI, HIGH);
+
+
+	systemConfig.reverseSwitchPort = REVERSE_PORT;
+	pinMode(systemConfig.reverseSwitchPort, INPUT_PULLUP);
 
 
 	lcd = new LiquidCrystal_I2C(LCD_ADDRESS, LCD_COLOUMNS, LCD_ROWS);

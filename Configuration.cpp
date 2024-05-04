@@ -53,6 +53,8 @@ void Configuration::init()
 		m_theConfiguration.trimValue = 0;
 		m_theConfiguration.scalarValue = 620;
 		m_theConfiguration.version = CURRENT_VERSION;
+		m_theConfiguration.minThrottle = 0;
+		m_theConfiguration.maxThrottle = 511;
 		writeConfiguration();
 	}
 }
@@ -63,7 +65,7 @@ void Configuration::getStoredData()
 	EEPROM.get(0, m_theConfiguration);
 }
 
-ConfigurationV2* Configuration::getConfiguration()
+CURRENT_CONFIGURATION* Configuration::getConfiguration()
 {
 	return &m_theConfiguration;
 }
