@@ -33,10 +33,6 @@ void runMotors()
 		mutatorIndex++;
 	}
 
-	Serial.print(motorSpeeds.m1Speed);
-	Serial.print("  ");
-	Serial.println(motorSpeeds.m2Speed);
-
 	systemConfig.left->SetWiper(motorSpeeds.m1Speed, motorSpeeds.m2Speed);
 	return;
 }
