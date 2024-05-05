@@ -16,17 +16,16 @@ extern void MainMenu(Menu* menu);
 
 Menu settingsMenuConfig =
 {
-	5,
+	5,		// Number of menu items
 	0,
 	&systemConfig,
 	" Settings Menu  ",
 	{
 
-
+		{"Trim         ",	(void(*)(void*))TrimFunction,NULL},
+		{"Scaler       ",	(void(*)(void*))scalarFunction,NULL},
 		{"Throttle Min ",	(void(*)(void*))setMinValue,NULL},
-		{"Throttle Max ",	(void(*)(void*))setMinValue,NULL},
-
-
+		{"Throttle Max ",	(void(*)(void*))setMaxValue,NULL},
 		{"Exit         ",NULL,NULL},
 	//	{NULL,NULL,NULL}
 	}

@@ -32,7 +32,6 @@ void MCP41XX::SetWiper( int value1, int value2)
 	}
 
 	digitalWrite(m_csPin, LOW);
-	Serial.println(value2);
 	m_spi->transfer(0b00000000 + WRITE_DATA + (value1 & 0x100 ? 1 : 0));
 	m_spi->transfer(value1 & 0xff);
 

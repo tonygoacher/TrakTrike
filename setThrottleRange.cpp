@@ -20,8 +20,9 @@ static int showValue(const char *text)
 	systemConfig.lcd->print(text);
 
 	systemConfig.lcd->setCursor(0, 1);
-	sprintf(value, "Value: %04d",throttleValue);
+	sprintf(value, "Value: %04d     ",throttleValue);
 	systemConfig.lcd->print(value);
+	return throttleValue;
 }
 
 void setThrottleRange(const char *header, int* valueContainer)
@@ -47,5 +48,5 @@ void setMinValue(void* param)
 
 void setMaxValue(void* param)
 {
-	setThrottleRange("     Set Max    ", &Configuration::instance()->getConfiguration()->minThrottle);
+	setThrottleRange("     Set Max    ", &Configuration::instance()->getConfiguration()->maxThrottle);
 }
