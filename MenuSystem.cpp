@@ -25,6 +25,7 @@ static void ShowCurrentSelection(Menu* menu)
 	}
 	menu->system->lcd->setCursor(0, 1);
 	menu->currentSelection = menu->system->quadrature->readEncoder();
+	Serial.println(menu->currentSelection);
 	menu->system->lcd->print(menu->menuItems[menu->currentSelection].menuItemName);
 }
 
@@ -32,7 +33,7 @@ void MenuContinue(Menu* menu)
 {
 	menu->system->quadrature->disable();
 	menu->system->quadrature->setEncoderValue(menu->currentSelection);
-	menu->system->quadrature->setBoundaries(0, menu->numberOfSelections - 1, true);
+	menu->system->quadrature->setBoundaries(0, (menu->numberOfSelections - 1), true);
 	menu->system->quadrature->setAcceleration(0);
 	menu->system->quadrature->enable();
 
@@ -45,6 +46,7 @@ void MenuInit(Menu* menu)
 
 	MenuContinue(menu);
 }
+
 
 
 

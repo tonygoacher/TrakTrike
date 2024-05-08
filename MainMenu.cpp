@@ -7,6 +7,7 @@
 #include "TrimFunction.h"
 #include "ScalarFunction.h"
 #include "setThrottleRange.h"
+#include "showValues.h"
 
 
 extern SystemConfig systemConfig;
@@ -38,7 +39,7 @@ Menu mainMenuConfig =
 	&systemConfig,
 	"   Trak Trike   ",
 	{	{"Settings        ",(void(*)(void*))MainMenu, (void*)&settingsMenuConfig},
-		{"Menui2          ",(void(*)(void*))MainMenu, (void*)&settingsMenuConfig},
+		{"Show Values     ",(void(*)(void*))showValues, (void*)&settingsMenuConfig},
 	//	{NULL,NULL,NULL},
 	},
 };
