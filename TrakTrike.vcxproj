@@ -134,6 +134,7 @@
     <ClInclude Include="Quadrature.h" />
     <ClInclude Include="setThrottleRange.h" />
     <ClInclude Include="SettingsMenu.h" />
+    <ClInclude Include="showValues.h" />
     <ClInclude Include="SteeringAngleReader.h" />
     <ClInclude Include="Switch.h" />
     <ClInclude Include="System.h" />
@@ -154,6 +155,7 @@
     <ClCompile Include="Mut_Trimmer.cpp" />
     <ClCompile Include="Quadrature.cpp" />
     <ClCompile Include="setThrottleRange.cpp" />
+    <ClCompile Include="showValues.cpp" />
     <ClCompile Include="SteeringAngleReader.cpp" />
     <ClCompile Include="Switch.cpp" />
     <ClCompile Include="TrimFunction.cpp" />

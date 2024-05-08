@@ -10,20 +10,20 @@ void mutThrottle(struct Motors* motors, struct MotorOutput* motorSpeeds)
 	int minValue = Configuration::instance()->getConfiguration()->minThrottle;
 	int maxValue = Configuration::instance()->getConfiguration()->maxThrottle;
 
-	Serial.print(value);
+	/*Serial.print(value);
 	Serial.print(" ");
 	Serial.print(minValue);
 	Serial.print(" ");
 	Serial.print(maxValue);
-	Serial.print(" ");
+	Serial.print(" ");*/
 
 	value = constrain(value, minValue, maxValue);
 
-
+	/*
 	Serial.print(" ");
-	Serial.print(value);
+	Serial.print(value);*/
 
-	value = map(value, minValue, maxValue, 0, 511);
+	value = map(value, minValue, maxValue, 0, 256);
 
 	Serial.print(" ");
 	Serial.println(value);

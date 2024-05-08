@@ -18,7 +18,7 @@ void initMotors()
 	memset(m.motorSpeedMutators, 0, sizeof(m.motorSpeedMutators));
 	m.motorSpeedMutators[0] = &mutThrottle;
 	m.motorSpeedMutators[1] = &mutScalar;
-	m.motorSpeedMutators[2] = &mutTrimmer;
+//	m.motorSpeedMutators[1] = &mutTrimmer;
 	m.motorSpeedMutators[2] = &mutReverse;
 }
 
