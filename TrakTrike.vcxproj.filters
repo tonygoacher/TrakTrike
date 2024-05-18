@@ -90,6 +90,9 @@
     <ClInclude Include="showValues.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="setMaxOutput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MCP41XX.cpp">
@@ -138,6 +141,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="showValues.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SetMaxOutput.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

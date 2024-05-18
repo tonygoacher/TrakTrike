@@ -5,21 +5,9 @@
 
 
 
-static  int trimValue = 0;
-
-int getTrimValue()
-{
-	return trimValue;
-}
-
-void initTrimValue()
-{
-	trimValue = Configuration::instance()->getConfiguration()->trimValue;
-}
-
 void mutTrimmer(struct Motors* motors, struct MotorOutput* motorOutput)
 {
-
+	long trimValue = Configuration::instance()->getConfiguration()->trimValue;
 	long newMotor;
 	long trim = 1000 - abs(trimValue);
 	
@@ -46,7 +34,3 @@ void mutTrimmer(struct Motors* motors, struct MotorOutput* motorOutput)
 
 }
 
-void setTrimValue(int newTrimValue)
-{
-	trimValue = newTrimValue;
-}

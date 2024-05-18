@@ -87,7 +87,7 @@ void setup()
 	systemConfig.lcd = lcd;
 	systemConfig.left = new MCP41XX(&spi, _CS, WIPER_LEFT_ADDRESS);
 	systemConfig.left->Init();
-	Serial.println("AAAAAAAA");
+	systemConfig.showMotorValues = false;
 
 	pinMode(SHUTDOWN, OUTPUT);
 	digitalWrite(SHUTDOWN, HIGH);

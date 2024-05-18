@@ -15,6 +15,7 @@ struct SystemConfig
 	Switch* encoderSwitch;
 	int reverseSwitchPort;
 	MCP41XX* left;
+	bool showMotorValues;
 };
 
 

@@ -8,6 +8,7 @@
 #include "ScalarFunction.h"
 #include "setThrottleRange.h"
 #include "showValues.h"
+#include "setMaxOutput.h"
 
 
 extern SystemConfig systemConfig;
@@ -17,16 +18,18 @@ extern void MainMenu(Menu* menu);
 
 Menu settingsMenuConfig =
 {
-	5,		// Number of menu items
+	5
+	,		// Number of menu items
 	0,
 	&systemConfig,
+	false,				// Do not run motors during this menu
 	" Settings Menu  ",
 	{
 
 		{"Trim         ",	(void(*)(void*))TrimFunction,NULL},
-		{"Scaler       ",	(void(*)(void*))scalarFunction,NULL},
 		{"Throttle Min ",	(void(*)(void*))setMinValue,NULL},
 		{"Throttle Max ",	(void(*)(void*))setMaxValue,NULL},
+		{"Set Max Outpt",   (void(*)(void*))setMaxOutput,NULL},
 		{"Exit         ",NULL,NULL},
 	//	{NULL,NULL,NULL}
 	}
@@ -37,6 +40,7 @@ Menu mainMenuConfig =
 	2,
 	0,	// INitial menu index
 	&systemConfig,
+	true,				// Run motors during this menu
 	"   Trak Trike   ",
 	{	{"Settings        ",(void(*)(void*))MainMenu, (void*)&settingsMenuConfig},
 		{"Show Values     ",(void(*)(void*))showValues, (void*)&settingsMenuConfig},
@@ -55,7 +59,7 @@ void MainMenu(Menu* menu)
 
 	while (systemConfig.encoderSwitch->Pressed())
 	{
-		runMotors();
+		runMotors(false);
 	}
 	while (1)
 	{
@@ -77,7 +81,11 @@ void MainMenu(Menu* menu)
 			}
 		}
 		delay(50);
-        runMotors();
+		if (menu->runMotors)
+		{
+			runMotors(false);
+		}
+        
 	}
 }
 

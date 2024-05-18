@@ -21,12 +21,13 @@ struct MenuItem
 	void* parameter;
 };
 
-#define MAX_MENU_ITEMS	5
+#define MAX_MENU_ITEMS	6
 struct Menu
 {
 	uint8_t	numberOfSelections;
 	uint32_t	currentSelection;
 	SystemConfig* system;
+	bool	runMotors;
 	const char* const topLine;
 	MenuItem menuItems[MAX_MENU_ITEMS];
 };

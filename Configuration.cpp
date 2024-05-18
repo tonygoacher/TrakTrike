@@ -52,11 +52,10 @@ void Configuration::init()
 		memset(&m_theConfiguration, 0, sizeof(m_theConfiguration));
 		m_theConfiguration.trimValue = 0;
 		m_theConfiguration.scalarValue = 620;
-
-
 		m_theConfiguration.version = CURRENT_VERSION;
 		m_theConfiguration.minThrottle = 0;
 		m_theConfiguration.maxThrottle = 511;
+		m_theConfiguration.maxOutput = 256;
 		writeConfiguration();
 	}
 }

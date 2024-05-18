@@ -27,8 +27,20 @@ struct ConfigurationV3
 	uint16_t csum;
 };
 
-#define CURRENT_VERSION	3
-#define CURRENT_CONFIGURATION ConfigurationV3
+struct ConfigurationV4
+{
+	int	version;
+	int trimValue;
+	int scalarValue;
+
+	int maxThrottle;
+	int minThrottle;
+	int maxOutput;
+	uint16_t csum;
+};
+
+#define CURRENT_VERSION	4
+#define CURRENT_CONFIGURATION ConfigurationV4
 
 
 class IConfiguration

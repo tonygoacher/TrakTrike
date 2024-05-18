@@ -24,7 +24,7 @@ void TrimFunction(void* param)
 	int oldTrimValue = Configuration::instance()->getConfiguration()->trimValue;
 
 	systemConfig.lcd->clear();
-	uint32_t displayTrimValue = getTrimValue();	// Trim value range is -1000.0 to +1000.0 but quad can onlu use positive numbers
+	uint32_t displayTrimValue = oldTrimValue;
 
 	systemConfig.quadrature->setBoundaries(-1000, 1000, false);
 	systemConfig.quadrature->setEncoderValue(displayTrimValue);
@@ -40,8 +40,9 @@ void TrimFunction(void* param)
 			displayTrimValue = systemConfig.quadrature->readEncoder();
 			showTrimValue((int)displayTrimValue);
 		}
+		Configuration::instance()->getConfiguration()->trimValue = displayTrimValue;
 
-		runMotors();
+		runMotors(false);
 	} while (!systemConfig.encoderSwitch->Pressed());
 	if (initialTrimValue != displayTrimValue)
 	{

@@ -23,10 +23,7 @@ void mutThrottle(struct Motors* motors, struct MotorOutput* motorSpeeds)
 	Serial.print(" ");
 	Serial.print(value);*/
 
-	value = map(value, minValue, maxValue, 0, 256);
-
-	Serial.print(" ");
-	Serial.println(value);
+	value = map(value, minValue, maxValue, 0, Configuration::instance()->getConfiguration()->maxOutput);
 
 	motorSpeeds->m1Speed = value;
 	motorSpeeds->m2Speed = value;
